@@ -539,15 +539,20 @@
       ? '<svg viewBox="0 0 100 100" class="fb-mark" aria-hidden="true"><circle cx="50" cy="50" r="36" fill="none" stroke="#27ae60" stroke-width="12"/></svg>'
       : '<svg viewBox="0 0 100 100" class="fb-mark" aria-hidden="true"><path d="M24 24 L76 76 M76 24 L24 76" stroke="#e74c3c" stroke-width="12" stroke-linecap="round"/></svg>';
 
+    /* よこ長の 画面では fb-main（左）と fb-detail（右）の 2列に なる */
     var html =
       '<div class="fb ' + (correct ? 'fb-ok' : 'fb-ng') + '">' +
+      '<div class="fb-main">' +
       '<div class="fb-top">' + mark + '<h2>' + (correct ? 'せいかい！' : 'ざんねん…') + '</h2></div>' +
       '<div class="fb-item">' + icon(it.icon, 'fb-icon') + '<span>' + rich(it.name) + '</span></div>' +
       '<p class="fb-row"><span class="fb-label">こたえ</span>' + chipHTML(c, answer) + '</p>' +
       (correct ? '' : '<p class="fb-row fb-yours"><span class="fb-label">えらんだ 箱</span>' + chipHTML(c, chosen) + '</p>') +
+      '</div>' +
+      '<div class="fb-detail">' +
       (why ? '<div class="fb-why"><span class="fb-why-label">なぜ？</span><p>' + rich(why) + '</p></div>' : '') +
       (note ? '<p class="fb-note"><span aria-hidden="true">⚠</span> ' + rich(note) + '</p>' : '') +
       (others ? '<div class="fb-others"><h3>ほかの 国では？</h3><ul>' + others + '</ul></div>' : '') +
+      '</div>' +
       '</div>';
 
     var last = state.index >= state.queue.length - 1;

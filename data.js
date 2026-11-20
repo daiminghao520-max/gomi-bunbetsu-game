@@ -539,7 +539,7 @@ window.GAME_DATA = {
       '<path d="M33 56 q6 -6 12 0 M52 50 q6 -6 12 0 M45 62 q6 -5 12 0" fill="none" stroke="#3f6a26" stroke-width="2.5"/>',
     tissue:
       '<path d="M28 34 L42 24 L54 31 L68 26 L77 42 L72 56 L79 70 L63 79 L50 72 L36 80 L22 67 L28 52 L22 44 Z" fill="#ffffff"/>' +
-      '<path d="M40 38 L50 50 L42 64 M60 40 L52 50 L64 66 M50 50 L56 58" fill="none" stroke-width="2"/>',
+      '<path d="M36 40 Q44 46 40 56 M58 36 Q56 46 66 50 M46 64 Q56 64 60 72" fill="none" stroke-width="2"/>',
     diaper:
       '<path d="M18 30 L82 30 L78 50 Q64 56 60 80 L40 80 Q36 56 22 50 Z" fill="#f4f8ff"/>' +
       '<path d="M18 30 L82 30 L80 39 L20 39 Z" fill="#a9cdf5"/>' +
