@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf5ff">
+  <meta name="description" content="日本・中国（上海）・韓国（ソウル）の ごみの 分けかたを くらべる、小学生むけの ごみ分別ゲーム。">
+  <title>日中韓ごみ分別ゲーム</title>
+
+  <!-- Google Fonts は インターネットが ある ときだけ。ないときは パソコンの フォントで 表示します。 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;display=swap" media="print" onload="this.media='all'">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-screen="title">
+  <div id="app">
+    <header class="topbar">
+      <button type="button" id="tb-back" class="tb-btn tb-back" hidden>
+        <span aria-hidden="true">◀</span> <span class="tb-back-label"></span>
+      </button>
+      <div id="tb-center" class="tb-center"></div>
+      <div class="tb-tools">
+        <button type="button" id="tb-sound" class="tb-btn tool" aria-pressed="true" title="おと">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="tool-icon">
+            <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>
+            <path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path class="mute" d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="tool-label">おと オン</span>
+        </button>
+        <button type="button" id="tb-ruby" class="tb-btn tool" aria-pressed="true" title="ふりがな">
+          <span class="tool-icon tool-ruby" aria-hidden="true"><ruby>字<rt>じ</rt></ruby></span>
+          <span class="tool-label">ふりがな オン</span>
+        </button>
+        <button type="button" id="tb-help" class="tb-btn tool tool-help" title="あそびかた">
+          <span aria-hidden="true">？</span><span class="sr-only">あそびかた</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- タイトル -->
+      <section id="screen-title" class="screen">
+        <div class="title-wrap">
+          <div id="title-art" class="title-art" aria-hidden="true"></div>
+          <h1 class="logo">
+            <span class="logo-small"><ruby>日<rt>にっ</rt>中<rt>ちゅう</rt>韓<rt>かん</rt></ruby></span>
+            <span class="logo-main">ごみ<ruby>分別<rt>ぶんべつ</rt></ruby>ゲーム</span>
+          </h1>
+          <p class="lead">日本・<ruby>中国<rt>ちゅうごく</rt></ruby>・<ruby>韓国<rt>かんこく</rt></ruby>の ごみの 分けかたを くらべてみよう！<br>
+            「どうして この 国は こう 分けるの？」を かんがえよう。</p>
+          <div id="title-items" class="title-items" aria-hidden="true"></div>
+          <div class="title-actions">
+            <button type="button" id="btn-start" class="btn btn-big">スタート</button>
+            <button type="button" id="btn-howto" class="btn btn-sub">あそびかた</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 国えらび -->
+      <section id="screen-select" class="screen" hidden>
+        <div class="page">
+          <h1>どの 国から あそぶ？</h1>
+          <p class="sub">① → ② → ③ の じゅんばんが おすすめだよ。</p>
+          <div id="country-grid" class="country-grid"></div>
+          <div class="page-actions">
+            <button type="button" id="btn-summary-top" class="btn btn-sub">まとめを 見る</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 国の しょうかい（game.js が 中身を つくる） -->
+      <section id="screen-intro" class="screen" hidden></section>
+
+      <!-- あそぶ 画面 -->
+      <section id="screen-play" class="screen" hidden>
+        <p id="play-notice" class="play-notice" hidden></p>
+        <div class="play-stage">
+          <h1 class="play-q">この ごみは どの ごみ箱？</h1>
+          <div class="card-slot">
+            <div id="trash-card" class="trash-card" role="img" aria-label=""></div>
+          </div>
+          <p id="play-hint" class="play-hint">ごみを ごみ箱へ ドラッグ するか、ごみ箱を タップしてね</p>
+        </div>
+        <div id="bins" class="bins" role="group" aria-label="ごみ箱"></div>
+      </section>
+
+      <!-- けっか・まとめ（game.js が 中身を つくる） -->
+      <section id="screen-result" class="screen" hidden></section>
+      <section id="screen-summary" class="screen" hidden></section>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+  <div id="sr-live" class="sr-only" aria-live="polite"></div>
+
+  <noscript>
+    <p class="fatal">この ゲームは JavaScript を 使います。ブラウザの せっていで JavaScript を オンに してね。</p>
+  </noscript>
+
+  <!-- type="module" は 使わない（ダブルクリックで ひらいた ときも 動くように） -->
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
